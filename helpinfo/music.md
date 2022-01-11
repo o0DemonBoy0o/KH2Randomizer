@@ -25,11 +25,11 @@ Any folder that starts with an _ will be ignored by the randomizer, which can be
 
 A config.txt can have two types of lines (others are ignored)
 
-`category=(unknown|battle|field|cutscene)`
+`category=(unknown|battle|field|cutscene|title|boss)`
 
 This is the type of music that will be applied to all the .scd files in this folder (not subfolders).
 
-`<songname.scd>=(unknown|battle|field|cutscene)
+`<songname.scd>=(unknown|battle|field|cutscene|title|boss)
 
 In addition you can add lines to override specific songs to a specific type of music
 
