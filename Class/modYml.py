@@ -146,7 +146,7 @@ class modYml:
             ]
         }
 
-    def getSysYAML(seedHashIcons, crit_mode = False):
+    def getSysYAML(seedHashIcons, crit_mode = False, final_door = 'ALLPROOF'):
         seedHashString = " ".join(["{:icon " + icon + "}" for icon in seedHashIcons])
         sys = [{"id": 17198, "en":seedHashString, "jp":seedHashString}]
         # sys.append({"id": 19482, "en": "Important Checks Found"}) # Not needed until we figure out how to display the correct amount
@@ -180,9 +180,119 @@ class modYml:
                 "en": "A true test of skill for the adept. Begin\nwith certain abilities and other perks.\n{:color #F0F00080}Critical Bonuses are turned off. The seven\nstarting items will be junk.",
                 "jp": "アクションのウデがためされる 上級者向けのモードです\n{:color #FF000080}クリティカル特典が無効になっています。ゲーム開始時\nにランダムな7つのジャンクアイテムを受け取れます",
             })
-
+        if final_door == 'OBJECTIVES':
+            sys.append({"id": 15115, "en": "Completion Mark"})
+            sys.append({"id": 15116, "en": "An Objective Completion Mark.\nAwarded to those who complete given tasks.\n7 of these are required to open the door..."})
         return sys
     
+    def getJmYAML(objectives):
+        jm = []
+
+        #reportId = 14051
+        #counter = 1
+        #for task in objectives:
+        #    if reportId == 14071:
+        #        reportId = 14254
+        #    jm.append({"id": reportId, "en": "Objective "+str(counter)})
+        #    jm.append({"id": reportId+1, "en": task.Name})
+        #    reportId+=2
+        #    counter+=1
+        #redo. gonna have all lines in a single report entry (unused report 14)
+
+        jm.append({"id": 13945, "en": "Objectives"})
+        jm.append({"id": 14260, "en": "Objective List"})
+        listText = ''
+        counter = 1
+        for task in objectives:
+            listText += str(counter)+'. '+task.Name+'\n'
+            counter+=1
+        jm.append({"id": 14261, "en": listText})
+
+        return jm
+
+    def getObjectiveMsgMod():
+        ObjectiveMod = []
+
+        ObjectiveMod.append({
+            "name": "msg/us/jm.bar",
+            "multi": [
+                {"name": "msg/fr/jm.bar"},
+                {"name": "msg/gr/jm.bar"},
+                {"name": "msg/it/jm.bar"},
+                {"name": "msg/sp/jm.bar"},
+            ],
+            "method": "binarc",
+            "source": [
+                {
+                    "name": "jm",
+                    "type": "list",
+                    "method": "kh2msg",
+                    "source": [
+                        {
+                            "name": "jm.yml",
+                            "language": "en"
+                        }
+                    ]
+                }
+            ]
+        })
+
+        ObjectiveMod.append({
+            "name": "remastered/itempic/item-226.imd/-0.dds",
+            "method": "copy",
+            "platform": "pc",
+            "source": [
+                {
+                    "name": "objectives/remastered/completionmark.dds",
+                }
+            ]
+        })
+
+        return ObjectiveMod
+
+    def getObjectiveBarMod(pc = False, puzz = False):
+        if not puzz:
+            mod_dict = {
+                        "method": "binarc",
+                        "source": [
+                            {
+                                "name": "anse",
+                                "type": "jimidata",
+                                "method": "copy",
+                                "source": [
+                                    {
+                                        "name": "objectives/ansem.bin"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+
+            mod_dict["name"] = "menu/fm/jiminy.bar"
+
+            if pc:
+                mod_dict["multi"] = [
+                            {"name": "menu/us/jiminy.bar"},
+                            {"name": "menu/fr/jiminy.bar"},
+                            {"name": "menu/gr/jiminy.bar"},
+                            {"name": "menu/it/jiminy.bar"},
+                            {"name": "menu/sp/jiminy.bar"},
+                            {"name": "menu/uk/jiminy.bar"},
+                        ]
+            return mod_dict
+        else:
+            mod_dict = [{
+                        "name": "anse",
+                        "type": "jimidata",
+                        "method": "copy",
+                        "source": [
+                            {
+                                "name": "objectives/ansem.bin"
+                            }
+                        ]
+                    }]
+            return mod_dict
+
     def getASDataMod():
         ASMod = []
         for ASRoom in ['hb32','hb33','hb34','hb38']:

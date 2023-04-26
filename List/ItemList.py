@@ -226,7 +226,9 @@ class Items:
             KH2Item(537, "Hades Cup Trophy", itemType.TROPHY, itemRarity.UNCOMMON),
             KH2Item(462, "Unknown Disk", itemType.MANUFACTORYUNLOCK, itemRarity.UNCOMMON), # DUMMY 15
 
-            KH2Item(363, "Crystal Orb", itemType.KEYITEM),
+            #use this for objective the item for now
+            #KH2Item(363, "Crystal Orb", itemType.KEYITEM),
+
             KH2Item(364, "Seifer's Trophy", itemType.KEYITEM),
             KH2Item(368, "Namine's Sketches", itemType.KEYITEM),
             KH2Item(370, "Olympus Stone", itemType.OCSTONE, itemRarity.UNCOMMON),
@@ -451,6 +453,13 @@ class Items:
     def sharedMultiItem():
         return KH2Item(461,"Shared MultiWorld Item", itemType.MULTIWORLD) # Dummy 14
 
+    @staticmethod
+    def sharedObjectiveItem():
+        return KH2Item(363,"Objective Completion Item", itemType.OBJECTIVE) # Dummy 14
+    
+    @staticmethod
+    def getObjectiveReport():
+        return KH2Item(73, "Way to the Dawn (Riku)", itemType.KEYITEM)
 
     @staticmethod
     def locationToKeybladeItem(location_id):

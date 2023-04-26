@@ -134,6 +134,7 @@ class itemType(str, Enum):
     SLOT = "Slot Up"
     SYNTH = "SYNTH"
     MULTIWORLD = "MultiWorld"
+    OBJECTIVE = "Objective"
 
 
 class BattleLevelOption(str, Enum):
@@ -143,3 +144,7 @@ class BattleLevelOption(str, Enum):
     RANDOM_WITHIN_RANGE = 'Within Range of Normal'
     RANDOM_MAX_50 = 'Random (Max 50)'
     SCALE_TO_50 = 'Scale to 50'
+
+class FinalDoorlOption(str, Enum):
+    ALLPROOF = 'All 3 Proofs'
+    OBJECTIVES = '7 Objectives Completed'

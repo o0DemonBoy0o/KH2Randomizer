@@ -11,7 +11,7 @@ from khbr.randomizer import Randomizer as khbr
 from Class import settingkey
 from Class.exceptions import SettingsException
 from List.ItemList import Items, itemRarity
-from List.configDict import expCurve, locationType, locationDepth, BattleLevelOption
+from List.configDict import expCurve, locationType, locationDepth, BattleLevelOption, FinalDoorlOption
 from Module import encoding, commandmenu
 from Module.progressionPoints import ProgressionPoints
 
@@ -2043,6 +2043,26 @@ _all_settings = [
         All items from Final Form are replaced with junk.
         '''
     ),
+
+    SingleSelect(
+        name=settingkey.FINAL_DOOR_REQUIREMENT,
+        group=SettingGroup.SEED_MODIFIERS,
+        ui_label='Final Door Requirement',
+        choices={option.name: option.value for option in list(FinalDoorlOption)},
+        shared=True,
+        default=FinalDoorlOption.ALLPROOF.name,
+        tooltip='''
+        Changes the requirement to open the door to Final Xemnas.
+        
+        All 3 Proofs - Proof of Peace, Proof of Nonexistance, & Proof of Connection are needed to open the door.
+        
+        7 Objectives Completed - 13 random objectives given to the player. 7 of them must be completed to open the door.
+        
+        ''',
+        standalone_label="Final Fights Objective",
+        randomizable=True
+    ),
+
 
     Toggle(
         name=settingkey.BLOCK_COR_SKIP,

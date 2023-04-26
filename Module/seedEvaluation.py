@@ -73,6 +73,11 @@ class LocationInformedSeedValidator:
         results = ValidationResult()
         inventory = []
         inventory += startingInventory
+
+        #add proof to this list to trick seed evaluation if objective mode is on
+        if settings.final_door_requirement == 'OBJECTIVES':
+            inventory += [594]
+
         if len(randomizer.shop_items)>0:
             for i in randomizer.shop_items:
                 inventory.append(i.Id)

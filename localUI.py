@@ -643,7 +643,7 @@ class KH2RandomizerApp(QMainWindow):
                 split_pc_emu = split_pc_emu or rando_settings.enemy_options["boss"] != "Disabled"
                 split_pc_emu = split_pc_emu or rando_settings.enemy_options["enemy"] != "Disabled"
                 # split_pc_emu = split_pc_emu or self.settings.get(settingkey.TT1_JAILBREAK)
-
+                split_pc_emu = split_pc_emu or self.settings.get(settingkey.FINAL_DOOR_REQUIREMENT)=='OBJECTIVES'
                 
                 disable_emu = False
                 disable_emu = disable_emu or rando_settings.enemy_options["enemy"] == "Wild"

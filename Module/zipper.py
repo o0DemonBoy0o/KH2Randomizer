@@ -213,7 +213,7 @@ class SeedZip:
 
     def createZip(self, settings: RandomizerSettings, randomizer: Randomizer, hints, extra_data: ExtraConfigurationData, multiworld):
         mod = modYml.getDefaultMod()
-        sys = modYml.getSysYAML(settings.seedHashIcons,settings.crit_mode)
+        sys = modYml.getSysYAML(settings.seedHashIcons,settings.crit_mode,settings.final_door_requirement)
 
         data = io.BytesIO()
         with zipfile.ZipFile(data, "w", zipfile.ZIP_DEFLATED) as outZip:
@@ -299,6 +299,9 @@ class SeedZip:
             self.createWardrobeSkipAssets(settings, mod, outZip)
             self.createDropRateAssets(settings, randomizer, mod, outZip)
             self.createShopRandoAssets(settings, randomizer, mod, outZip, sys)
+
+            self.createObjectiveModeAssets(settings, mod, outZip, pc_seed_toggle)
+
             battle_level_spoiler = self.createBtlvRandoAssets(settings, mod, outZip)
 
             outZip.writestr("TrsrList.yml", yaml.dump(self.formattedTrsr, line_break="\r\n"))
@@ -790,6 +793,25 @@ class SeedZip:
 
             outZip.writestr("modified_synth_reqs.bin",binaryContent)
 
+    def createObjectiveModeAssets(self, settings, mod, outZip, pc_toggle):
+        #ymal edits
+        if settings.final_door_requirement == 'OBJECTIVES':
+            mod["assets"] += modYml.getObjectiveMsgMod()
+            jm = modYml.getJmYAML(settings.objectiveList)
+            outZip.writestr("jm.yml", yaml.dump(jm, line_break="\r\n"))
+            #jiminy.bar edits
+            #check if puzzles were enabled. if so we need to add the bar edit differently as the jiminy entry would already be added
+            if locationType.Puzzle not in settings.disabledLocations:
+                for mods in mod["assets"]:
+                    if mods["name"]=="menu/fm/jiminy.bar":
+                        mods["source"] += modYml.getObjectiveBarMod(pc_toggle, True)
+                        break
+            else:
+                mod["assets"] += [modYml.getObjectiveBarMod(pc_toggle, False)]
+
+            outZip.write(resource_path("static/objectives/ansem.bin"), "objectives/ansem.bin")
+            outZip.write(resource_path("static/objectives/completionmark.dds"), "objectives/remastered/completionmark.dds")
+
     @staticmethod
     def write_music_replacements(replacements: dict[str, str], outZip):
         if len(replacements) > 0:
@@ -803,7 +825,7 @@ class SeedZip:
             while(len(itemList)<32):
                 itemList.append(0)
 
-        masterItemList = Items.getItemList() + Items.getActionAbilityList() + Items.getSupportAbilityList() + [Items.getTT1Jailbreak()] + [Items.getPromiseCharm()]
+        masterItemList = Items.getItemList() + Items.getActionAbilityList() + Items.getSupportAbilityList() + [Items.getTT1Jailbreak()] + [Items.getPromiseCharm()] + [Items.getObjectiveReport()]
         reports = [i.Id for i in masterItemList if i.ItemType==itemType.REPORT]
         story_unlocks = [i.Id for i in masterItemList if i.ItemType==itemType.STORYUNLOCK]
         donald_goofy_handled_items = reports+story_unlocks

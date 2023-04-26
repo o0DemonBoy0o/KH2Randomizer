@@ -26,6 +26,7 @@ DONALD_AP = "donald_ap"
 ENABLE_PROMISE_CHARM = 'enable_promise_charm'
 FAST_URNS = 'fast_urns'
 FIFTY_AP_BOOSTS = 'fifty_ap_boosts'
+FINAL_DOOR_REQUIREMENT = 'final_door_requirement'
 FINAL_EXP_CURVE = 'final_exp_curve'
 FINAL_EXP_MULTIPLIER = 'final_exp_multiplier'
 GARDEN_OF_ASSEMBLAGE_REWARDS = 'garden_of_assemblage_rewards'
