@@ -18,9 +18,9 @@ def generateSeed(settings: RandomizerSettings, extra_data: ExtraConfigurationDat
     for attempt in range(50):
         try:
             randomizer = Randomizer(settings)
-            newSeedValidation.validateSeed(settings,randomizer)
-            hints = Hints.generateHints(randomizer,settings)
-            zipper = SeedZip(settings, randomizer, hints, extra_data)
+            #newSeedValidation.validateSeed(settings,randomizer)
+            #hints = Hints.generateHints(randomizer,settings)
+            zipper = SeedZip(settings, randomizer, None, extra_data)
             return zipper.outputZip, zipper.spoiler_log, zipper.enemy_log
         except RandomizerExceptions as e:
             characters = string.ascii_letters + string.digits

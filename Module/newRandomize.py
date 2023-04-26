@@ -106,8 +106,8 @@ class Randomizer():
         self.proof_depths = ItemDepths(settings.proofDepth,self.master_locations)
         self.story_depths = ItemDepths(settings.storyDepth,self.master_locations)
         self.yeet_the_bear = settings.yeetTheBear
-        self.num_valid_locations = None
-        self.num_available_items = None
+        self.num_valid_locations = 999
+        self.num_available_items = 999
         self.assignedItems = []
         self.assignedDonaldItems = []
         self.assignedGoofyItems = []
@@ -116,13 +116,13 @@ class Randomizer():
         self.formLevelExp = []
         self.synthesis_recipes = []
         self.shop_items = []
-        self.assignSoraItems(settings)
+        #self.assignSoraItems(settings)
         if progress_bar_vis:
             return
-        self.assignPartyItems()
-        self.assignWeaponStats(settings)
-        self.assignLevelStats(settings)
-        self.assignFormLevelExp(settings)
+        #self.assignPartyItems()
+        #self.assignWeaponStats(settings)
+        #self.assignLevelStats(settings)
+        #self.assignFormLevelExp(settings)
     
     def assignFormLevelExp(self,settings):
         for category,exp in zip([locationCategory.SUMMONLEVEL,

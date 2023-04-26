@@ -6,143 +6,143 @@ class modYml:
         return {
             "title": "Randomizer Seed",
             "assets": [
-                {
-                    "name": "msg/us/sys.bar",
-                    "multi": [
-                        {"name": "msg/fr/sys.bar"},
-                        {"name": "msg/gr/sys.bar"},
-                        {"name": "msg/it/sys.bar"},
-                        {"name": "msg/sp/sys.bar"},
-                    ],
-                    "method": "binarc",
-                    "source": [
-                        {
-                            "name": "sys",
-                            "type": "list",
-                            "method": "kh2msg",
-                            "source": [
-                                {
-                                    "name": "sys.yml",
-                                    "language": "en"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "msg/jp/sys.bar",
-                    "platform": "ps2",
-                    "method": "binarc",
-                    "source": [
-                        {
-                            "name": "sys",
-                            "type": "list",
-                            "method": "kh2msg",
-                            "source": [
-                                {
-                                    "name": "sys.yml",
-                                    "language": "en"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "msg/jp/sys.bar",
-                    "platform": "pc",
-                    "method": "binarc",
-                    "source": [
-                        {
-                            "name": "sys",
-                            "type": "list",
-                            "method": "kh2msg",
-                            "source": [
-                                {
-                                    "name": "sys.yml",
-                                    "language": "jp"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "00battle.bin",
-                    "method": "binarc",
-                    "source": [
-                        {
-                            "name": "fmlv",
-                            "method": "listpatch",
-                            "type": "List",
-                            "source": [
-                                {
-                                    "name": "FmlvList.yml",
-                                    "type": "fmlv"
-                                }
-                            ]
-                        },
-                        {
-                            "name": "lvup",
-                            "method": "listpatch",
-                            "type": "List",
-                            "source": [
-                                {
-                                    "name": "LvupList.yml",
-                                    "type": "lvup"
-                                }
-                            ]
-                        },
-                        {
-                            "name": "bons",
-                            "method": "listpatch",
-                            "type": "List",
-                            "source": [
-                                {
-                                    "name": "BonsList.yml",
-                                    "type": "bons"
-                                }
-                            ]
-                        },
-                        {
-                            "name": "plrp",
-                            "method": "listpatch",
-                            "type": "List",
-                            "source": [
-                                {
-                                    "name": "PlrpList.yml",
-                                    "type": "plrp"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "03system.bin",
-                    "method": "binarc",
-                    "source": [
-                        {
-                            "name": "trsr",
-                            "method": "listpatch",
-                            "type": "List",
-                            "source": [
-                                {
-                                    "name": "TrsrList.yml",
-                                    "type": "trsr"
-                                }
-                            ]
-                        },
-                        {
-                            "name": "item",
-                            "method": "listpatch",
-                            "type": "List",
-                            "source": [
-                                {
-                                    "name": "ItemList.yml",
-                                    "type": "item"
-                                }
-                            ]
-                        }
-                    ]
-                }
+                #{
+                #    "name": "msg/us/sys.bar",
+                #    "multi": [
+                #        {"name": "msg/fr/sys.bar"},
+                #        {"name": "msg/gr/sys.bar"},
+                #        {"name": "msg/it/sys.bar"},
+                #        {"name": "msg/sp/sys.bar"},
+                #    ],
+                #    "method": "binarc",
+                #    "source": [
+                #        {
+                #            "name": "sys",
+                #            "type": "list",
+                #            "method": "kh2msg",
+                #            "source": [
+                #                {
+                #                    "name": "sys.yml",
+                #                    "language": "en"
+                #                }
+                #            ]
+                #        }
+                #    ]
+                #},
+                #{
+                #    "name": "msg/jp/sys.bar",
+                #    "platform": "ps2",
+                #    "method": "binarc",
+                #    "source": [
+                #        {
+                #            "name": "sys",
+                #            "type": "list",
+                #            "method": "kh2msg",
+                #            "source": [
+                #                {
+                #                    "name": "sys.yml",
+                #                    "language": "en"
+                #                }
+                #            ]
+                #        }
+                #    ]
+                #},
+                #{
+                #    "name": "msg/jp/sys.bar",
+                #    "platform": "pc",
+                #    "method": "binarc",
+                #    "source": [
+                #        {
+                #            "name": "sys",
+                #            "type": "list",
+                #            "method": "kh2msg",
+                #            "source": [
+                #                {
+                #                    "name": "sys.yml",
+                #                    "language": "jp"
+                #                }
+                #            ]
+                #        }
+                #    ]
+                #},
+                #{
+                #    "name": "00battle.bin",
+                #    "method": "binarc",
+                #    "source": [
+                #        {
+                #            "name": "fmlv",
+                #            "method": "listpatch",
+                #            "type": "List",
+                #            "source": [
+                #                {
+                #                    "name": "FmlvList.yml",
+                #                    "type": "fmlv"
+                #                }
+                #            ]
+                #        },
+                #        {
+                #            "name": "lvup",
+                #            "method": "listpatch",
+                #            "type": "List",
+                #            "source": [
+                #                {
+                #                    "name": "LvupList.yml",
+                #                    "type": "lvup"
+                #                }
+                #            ]
+                #        },
+                #        {
+                #            "name": "bons",
+                #            "method": "listpatch",
+                #            "type": "List",
+                #            "source": [
+                #                {
+                #                    "name": "BonsList.yml",
+                #                    "type": "bons"
+                #                }
+                #            ]
+                #        },
+                #        {
+                #            "name": "plrp",
+                #            "method": "listpatch",
+                #            "type": "List",
+                #            "source": [
+                #                {
+                #                    "name": "PlrpList.yml",
+                #                    "type": "plrp"
+                #                }
+                #            ]
+                #        }
+                #    ]
+                #},
+                #{
+                #    "name": "03system.bin",
+                #    "method": "binarc",
+                #    "source": [
+                #        {
+                #            "name": "trsr",
+                #            "method": "listpatch",
+                #            "type": "List",
+                #            "source": [
+                #                {
+                #                    "name": "TrsrList.yml",
+                #                    "type": "trsr"
+                #                }
+                #            ]
+                #        },
+                #        {
+                #            "name": "item",
+                #            "method": "listpatch",
+                #            "type": "List",
+                #            "source": [
+                #                {
+                #                    "name": "ItemList.yml",
+                #                    "type": "item"
+                #                }
+                #            ]
+                #        }
+                #    ]
+                #}
             ]
         }
 

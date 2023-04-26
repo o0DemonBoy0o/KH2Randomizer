@@ -190,23 +190,23 @@ class SynthLocation():
 class SeedZip:
 
     def __init__(self, settings: RandomizerSettings, randomizer: Randomizer, hints, extra_data: ExtraConfigurationData, multiworld : MultiWorldOutput = None):
-        self.formattedTrsr = {}
-        self.formattedLvup = {"Sora":{}}
-        self.formattedBons = {}
-        self.formattedFmlv = {}
-        self.formattedItem = {"Stats":[]}
-        self.formattedPlrp = []
+        #self.formattedTrsr = {}
+        #self.formattedLvup = {"Sora":{}}
+        #self.formattedBons = {}
+        #self.formattedFmlv = {}
+        #self.formattedItem = {"Stats":[]}
+        #self.formattedPlrp = []
         self.spoiler_log = None
         self.enemy_log = None
 
-        self.assignTreasures(randomizer)
-        self.assignLevels(settings,randomizer)
-        self.assignSoraBonuses(randomizer)
-        self.assignDonaldBonuses(randomizer)
-        self.assignGoofyBonuses(randomizer)
-        self.assignFormLevels(randomizer)
-        self.assignWeaponStats(randomizer)
-        self.assignStartingItems(settings, randomizer)
+        #self.assignTreasures(randomizer)
+        #self.assignLevels(settings,randomizer)
+        #self.assignSoraBonuses(randomizer)
+        #self.assignDonaldBonuses(randomizer)
+        #self.assignGoofyBonuses(randomizer)
+        #self.assignFormLevels(randomizer)
+        #self.assignWeaponStats(randomizer)
+        #self.assignStartingItems(settings, randomizer)
         for i in range(5):
             if self.createZip(settings, randomizer, hints, extra_data, multiworld):
                 return
@@ -214,7 +214,7 @@ class SeedZip:
 
     def createZip(self, settings: RandomizerSettings, randomizer: Randomizer, hints, extra_data: ExtraConfigurationData, multiworld):
         mod = modYml.getDefaultMod()
-        sys = modYml.getSysYAML(settings.seedHashIcons,settings.crit_mode)
+        #sys = modYml.getSysYAML(settings.seedHashIcons,settings.crit_mode)
 
         data = io.BytesIO()
         with zipfile.ZipFile(data, "w", zipfile.ZIP_DEFLATED) as outZip:
@@ -286,72 +286,72 @@ class SeedZip:
 
             print("Passed boss/enemy")
 
-            if multiworld:
-                outZip.writestr("multiworld.multi", json.dumps(multiworld()))
+            #if multiworld:
+            #    outZip.writestr("multiworld.multi", json.dumps(multiworld()))
 
             self.generate_seed_hash_image(settings, outZip)
-            self.createPuzzleAssets(settings, randomizer, mod, outZip, pc_seed_toggle)
-            self.createSynthAssets(settings, randomizer, mod, outZip, pc_seed_toggle)
-            self.createASDataAssets(settings, mod, outZip)
-            self.createSkipCarpetAssets(settings, mod, outZip)
-            self.createMapSkipAssets(settings, mod, outZip)
-            self.createBlockingSkipAssets(settings, mod, outZip)
-            self.createAtlanticaSkipAssets(settings, mod, outZip)
-            self.createWardrobeSkipAssets(settings, mod, outZip)
-            self.createDropRateAssets(settings, randomizer, mod, outZip)
-            self.createShopRandoAssets(settings, randomizer, mod, outZip, sys)
-            self.createChestVisualAssets(settings, randomizer, mod, outZip)
-            battle_level_spoiler = self.createBtlvRandoAssets(settings, mod, outZip)
+            #self.createPuzzleAssets(settings, randomizer, mod, outZip, pc_seed_toggle)
+            #self.createSynthAssets(settings, randomizer, mod, outZip, pc_seed_toggle)
+            #self.createASDataAssets(settings, mod, outZip)
+            #self.createSkipCarpetAssets(settings, mod, outZip)
+            #self.createMapSkipAssets(settings, mod, outZip)
+            #self.createBlockingSkipAssets(settings, mod, outZip)
+            #self.createAtlanticaSkipAssets(settings, mod, outZip)
+            #self.createWardrobeSkipAssets(settings, mod, outZip)
+            #self.createDropRateAssets(settings, randomizer, mod, outZip)
+            #self.createShopRandoAssets(settings, randomizer, mod, outZip, sys)
+            #self.createChestVisualAssets(settings, randomizer, mod, outZip)
+            #battle_level_spoiler = self.createBtlvRandoAssets(settings, mod, outZip)
 
-            outZip.writestr("TrsrList.yml", yaml.dump(self.formattedTrsr, line_break="\r\n"))
-            outZip.writestr("BonsList.yml", yaml.dump(self.formattedBons, line_break="\r\n"))
-            outZip.writestr("LvupList.yml", yaml.dump(self.formattedLvup, line_break="\r\n"))
-            outZip.writestr("FmlvList.yml", yaml.dump(self.formattedFmlv, line_break="\r\n"))
-            outZip.writestr("ItemList.yml", yaml.dump(self.formattedItem, line_break="\r\n"))
-            outZip.writestr("PlrpList.yml", yaml.dump(self.formattedPlrp, line_break="\r\n"))
-            outZip.writestr("sys.yml", yaml.dump(sys, line_break="\r\n"))
+            #outZip.writestr("TrsrList.yml", yaml.dump(self.formattedTrsr, line_break="\r\n"))
+            #outZip.writestr("BonsList.yml", yaml.dump(self.formattedBons, line_break="\r\n"))
+            #outZip.writestr("LvupList.yml", yaml.dump(self.formattedLvup, line_break="\r\n"))
+            #outZip.writestr("FmlvList.yml", yaml.dump(self.formattedFmlv, line_break="\r\n"))
+            #outZip.writestr("ItemList.yml", yaml.dump(self.formattedItem, line_break="\r\n"))
+            #outZip.writestr("PlrpList.yml", yaml.dump(self.formattedPlrp, line_break="\r\n"))
+            #outZip.writestr("sys.yml", yaml.dump(sys, line_break="\r\n"))
 
-            if hints is not None:
-                Hints.writeHints(hints, "HintFile", outZip)
-
-            self.createBetterSTTAssets(settings, mod, outZip)
-            self.addCmdListModifications(settings, mod, outZip)
+            #if hints is not None:
+            #    Hints.writeHints(hints, "HintFile", outZip)
+            #
+            #self.createBetterSTTAssets(settings, mod, outZip)
+            #self.addCmdListModifications(settings, mod, outZip)
             
-            if settings.spoiler_log or tourney_gen:
-                if not tourney_gen:
-                    mod["title"] += " w/ Spoiler"
-                with open(resource_path("static/spoilerlog.html")) as spoiler_site:
-                    settings_spoiler_json = settings.ui_settings.settings_spoiler_json()
-                    html_template = spoiler_site.read().replace("SEED_NAME_STRING",settings.random_seed) \
-                                                       .replace("{SEED_STRING}", settings.seed_string) \
-                                                       .replace("LEVEL_STATS_JSON",json.dumps(levelStatsDictionary(randomizer.levelStats))) \
-                                                       .replace("FORM_EXP_JSON",json.dumps({"Summon": {"multiplier": settings.summon_exp_multiplier, "values": list(accumulate(settings.summon_exp))},
-                                                                                            "Valor": {"multiplier": settings.valor_exp_multiplier, "values": list(accumulate(settings.valor_exp))},
-                                                                                            "Wisdom": {"multiplier": settings.wisdom_exp_multiplier, "values": list(accumulate(settings.wisdom_exp))},
-                                                                                            "Limit": {"multiplier": settings.limit_exp_multiplier, "values": list(accumulate(settings.limit_exp))},
-                                                                                            "Master": {"multiplier": settings.master_exp_multiplier, "values": list(accumulate(settings.master_exp))},
-                                                                                            "Final": {"multiplier": settings.final_exp_multiplier, "values": list(accumulate(settings.final_exp))},})) \
-                                                       .replace("DEPTH_VALUES_JSON",json.dumps(randomizer.location_weights.weights)) \
-                                                       .replace("SORA_ITEM_JSON",json.dumps(itemSpoilerDictionary(randomizer.assignedItems,randomizer.location_weights,LocationInformedSeedValidator().validateSeed(settings, randomizer, False)), indent=4, cls=ItemEncoder)) \
-                                                       .replace("DONALD_ITEM_JSON",json.dumps(itemSpoilerDictionary(randomizer.assignedDonaldItems), indent=4, cls=ItemEncoder))\
-                                                       .replace("GOOFY_ITEM_JSON",json.dumps(itemSpoilerDictionary(randomizer.assignedGoofyItems), indent=4, cls=ItemEncoder))\
-                                                       .replace("BOSS_ENEMY_JSON",json.dumps(enemySpoilersJSON)) \
-                                                       .replace("BATTLE_LEVEL_JSON",json.dumps(battle_level_spoiler)) \
-                                                       .replace("{SETTINGS_JSON}", json.dumps(settings_spoiler_json))
-                    html_template = html_template.replace("PromiseCharm","Promise Charm")
-                    if not tourney_gen:
-                        outZip.writestr("spoilerlog.html",html_template)
-                    self.spoiler_log = html_template
-                    self.enemy_log = enemySpoilers
-                    outZip.write(resource_path("static/KHMenu.otf"), "KHMenu.otf")
-                if enemySpoilers and not tourney_gen:
-                    outZip.writestr("enemyspoilers.txt", enemySpoilers)
+            #if settings.spoiler_log or tourney_gen:
+            #    if not tourney_gen:
+            #        mod["title"] += " w/ Spoiler"
+            #    with open(resource_path("static/spoilerlog.html")) as spoiler_site:
+            #        settings_spoiler_json = settings.ui_settings.settings_spoiler_json()
+            #        html_template = spoiler_site.read().replace("SEED_NAME_STRING",settings.random_seed) \
+            #                                           .replace("{SEED_STRING}", settings.seed_string) \
+            #                                           .replace("LEVEL_STATS_JSON",json.dumps(levelStatsDictionary(randomizer.levelStats))) \
+            #                                           .replace("FORM_EXP_JSON",json.dumps({"Summon": {"multiplier": settings.summon_exp_multiplier, "values": list(accumulate(settings.summon_exp))},
+            #                                                                                "Valor": {"multiplier": settings.valor_exp_multiplier, "values": list(accumulate(settings.valor_exp))},
+            #                                                                                "Wisdom": {"multiplier": settings.wisdom_exp_multiplier, "values": list(accumulate(settings.wisdom_exp))},
+            #                                                                                "Limit": {"multiplier": settings.limit_exp_multiplier, "values": list(accumulate(settings.limit_exp))},
+            #                                                                                "Master": {"multiplier": settings.master_exp_multiplier, "values": list(accumulate(settings.master_exp))},
+            #                                                                                "Final": {"multiplier": settings.final_exp_multiplier, "values": list(accumulate(settings.final_exp))},})) \
+            #                                           .replace("DEPTH_VALUES_JSON",json.dumps(randomizer.location_weights.weights)) \
+            #                                           .replace("SORA_ITEM_JSON",json.dumps(itemSpoilerDictionary(randomizer.assignedItems,randomizer.location_weights,LocationInformedSeedValidator().validateSeed(settings, randomizer, False)), indent=4, cls=ItemEncoder)) \
+            #                                           .replace("DONALD_ITEM_JSON",json.dumps(itemSpoilerDictionary(randomizer.assignedDonaldItems), indent=4, cls=ItemEncoder))\
+            #                                           .replace("GOOFY_ITEM_JSON",json.dumps(itemSpoilerDictionary(randomizer.assignedGoofyItems), indent=4, cls=ItemEncoder))\
+            #                                           .replace("BOSS_ENEMY_JSON",json.dumps(enemySpoilersJSON)) \
+            #                                           .replace("BATTLE_LEVEL_JSON",json.dumps(battle_level_spoiler)) \
+            #                                           .replace("{SETTINGS_JSON}", json.dumps(settings_spoiler_json))
+            #        html_template = html_template.replace("PromiseCharm","Promise Charm")
+            #        if not tourney_gen:
+            #            outZip.writestr("spoilerlog.html",html_template)
+            #        self.spoiler_log = html_template
+            #        self.enemy_log = enemySpoilers
+            #        outZip.write(resource_path("static/KHMenu.otf"), "KHMenu.otf")
+            if enemySpoilers and not tourney_gen:
+                outZip.writestr("enemyspoilers.txt", enemySpoilers)
 
-            mod["assets"] += commandmenu.randomize_command_menus(extra_data.command_menu_choice)
+            #mod["assets"] += commandmenu.randomize_command_menus(extra_data.command_menu_choice)
 
-            music_assets, music_replacements = CosmeticsMod.randomize_music(settings.ui_settings)
-            mod["assets"] += music_assets
-            self.write_music_replacements(music_replacements, outZip)
+            #music_assets, music_replacements = CosmeticsMod.randomize_music(settings.ui_settings)
+            #mod["assets"] += music_assets
+            #self.write_music_replacements(music_replacements, outZip)
 
             outZip.write(resource_path("Module/icon.png"), "icon.png")
 
