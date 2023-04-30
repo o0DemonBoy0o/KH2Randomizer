@@ -180,7 +180,7 @@ class modYml:
                 "en": "A true test of skill for the adept. Begin\nwith certain abilities and other perks.\n{:color #F0F00080}Critical Bonuses are turned off. The seven\nstarting items will be junk.",
                 "jp": "アクションのウデがためされる 上級者向けのモードです\n{:color #FF000080}クリティカル特典が無効になっています。ゲーム開始時\nにランダムな7つのジャンクアイテムを受け取れます",
             })
-        if final_door == 'OBJECTIVES':
+        if final_door != 'ALLPROOF':
             sys.append({"id": 15115, "en": "Completion Mark"})
             sys.append({"id": 15116, "en": "An Objective Completion Mark.\nAwarded to those who complete given tasks.\n7 of these are required to open the door..."})
         return sys

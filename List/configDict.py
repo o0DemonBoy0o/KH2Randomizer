@@ -147,4 +147,9 @@ class BattleLevelOption(str, Enum):
 
 class FinalDoorlOption(str, Enum):
     ALLPROOF = 'All 3 Proofs'
-    OBJECTIVES = '7 Objectives Completed'
+    OBJECTIVES = '7 Objectives (No Logic)'
+    OBJECTIVESEASY = '7 Objectives (Easy)'
+    OBJECTIVESMID = '7 Objectives (Medium)'
+    OBJECTIVESHARD = '7 Objectives (Hard)'
+    OBJECTIVESVHARD = '7 Objectives (Very Hard)'
+    OBJECTIVESBOSS = '7 Objectives (Bosses Only)'

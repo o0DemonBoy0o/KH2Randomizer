@@ -86,7 +86,7 @@ class RandomizerSettings():
             self.num_random_growths = 3
         self.chosen_random_growths = []
 
-        self.startingItems = [int(value) for value in ui_settings.get(settingkey.STARTING_INVENTORY)] + [int(value) for value in ui_settings.get(settingkey.STARTING_STORY_UNLOCKS)] + [starting_level for starting_level in SeedModifier.schmovement(ui_settings.get(settingkey.STARTING_MOVEMENT))] + SeedModifier.library(ui_settings.get(settingkey.STARTING_REPORTS)) + ([Items.getTT1Jailbreak().Id] if ui_settings.get(settingkey.TT1_JAILBREAK) else []) + ( [Items.getObjectiveReport().Id] if ui_settings.get(settingkey.FINAL_DOOR_REQUIREMENT)=='OBJECTIVES' else [] )
+        self.startingItems = [int(value) for value in ui_settings.get(settingkey.STARTING_INVENTORY)] + [int(value) for value in ui_settings.get(settingkey.STARTING_STORY_UNLOCKS)] + [starting_level for starting_level in SeedModifier.schmovement(ui_settings.get(settingkey.STARTING_MOVEMENT))] + SeedModifier.library(ui_settings.get(settingkey.STARTING_REPORTS)) + ([Items.getTT1Jailbreak().Id] if ui_settings.get(settingkey.TT1_JAILBREAK) else []) + ( [Items.getObjectiveReport().Id] if ui_settings.get(settingkey.FINAL_DOOR_REQUIREMENT)!='ALLPROOF' else [] )
 
         self.itemPlacementDifficulty = ui_settings.get(settingkey.ITEM_PLACEMENT_DIFFICULTY)
         self.nightmare = ui_settings.get(settingkey.NIGHTMARE_LOGIC)
@@ -188,7 +188,7 @@ class RandomizerSettings():
         self.seedHashIcons = generateHashIcons()
 
         self.final_door_requirement = ui_settings.get(settingkey.FINAL_DOOR_REQUIREMENT)
-        self.objectiveList = generateObjectives(self.enabledLocations, ui_settings.get(settingkey.AS_DATA_SPLIT))
+        self.objectiveList = generateObjectives(self.enabledLocations, ui_settings.get(settingkey.AS_DATA_SPLIT), self.final_door_requirement)
 
         self.statSanity = ui_settings.get(settingkey.STATSANITY)
         self.yeetTheBear = ui_settings.get(settingkey.YEET_THE_BEAR)

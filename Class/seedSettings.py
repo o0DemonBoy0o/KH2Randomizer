@@ -2056,7 +2056,7 @@ _all_settings = [
         
         All 3 Proofs - Proof of Peace, Proof of Nonexistance, & Proof of Connection are needed to open the door.
         
-        7 Objectives Completed - 13 random objectives given to the player. 7 of them must be completed to open the door.
+        7 Objectives - 13 random objectives given to the player. 7 of them must be completed to open the door.
         
         ''',
         standalone_label="Final Fights Objective",

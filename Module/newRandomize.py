@@ -385,7 +385,7 @@ class Randomizer():
         #         break
 
         #way of getting objective rando to work. could be improved later
-        if settings.final_door_requirement == 'OBJECTIVES':
+        if settings.final_door_requirement != 'ALLPROOF':
             objectiveItem = Items.sharedObjectiveItem()
             for x in range(13):
                 objective = settings.objectiveList[x]

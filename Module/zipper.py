@@ -795,7 +795,7 @@ class SeedZip:
 
     def createObjectiveModeAssets(self, settings, mod, outZip, pc_toggle):
         #ymal edits
-        if settings.final_door_requirement == 'OBJECTIVES':
+        if settings.final_door_requirement != 'ALLPROOF':
             mod["assets"] += modYml.getObjectiveMsgMod()
             jm = modYml.getJmYAML(settings.objectiveList)
             outZip.writestr("jm.yml", yaml.dump(jm, line_break="\r\n"))

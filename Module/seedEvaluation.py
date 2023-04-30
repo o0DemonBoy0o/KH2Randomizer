@@ -75,7 +75,7 @@ class LocationInformedSeedValidator:
         inventory += startingInventory
 
         #add proof to this list to trick seed evaluation if objective mode is on
-        if settings.final_door_requirement == 'OBJECTIVES':
+        if settings.final_door_requirement != 'ALLPROOF':
             inventory += [594]
 
         if len(randomizer.shop_items)>0:
