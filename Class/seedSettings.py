@@ -11,7 +11,7 @@ from khbr.randomizer import Randomizer as khbr
 from Class import settingkey
 from Class.exceptions import SettingsException
 from List.ItemList import Items, itemRarity
-from List.configDict import expCurve, locationType, locationDepth, BattleLevelOption, FinalDoorlOption
+from List.configDict import expCurve, locationType, locationDepth, BattleLevelOption, objectiveDifficultyOption
 from Module import encoding, commandmenu
 from Module.progressionPoints import ProgressionPoints
 
@@ -2044,25 +2044,64 @@ _all_settings = [
         '''
     ),
 
-    SingleSelect(
-        name=settingkey.FINAL_DOOR_REQUIREMENT,
-        group=SettingGroup.SEED_MODIFIERS,
-        ui_label='Final Door Requirement',
-        choices={option.name: option.value for option in list(FinalDoorlOption)},
+    Toggle(
+        name=settingkey.OBJECTIVE_RANDOMIZER,
+        group=SettingGroup.ITEM_PLACEMENT,
+        ui_label='Enable Objective Randomizer',
         shared=True,
-        default=FinalDoorlOption.ALLPROOF.name,
+        default=False,
         tooltip='''
-        Changes the requirement to open the door to Final Xemnas.
-        
-        All 3 Proofs - Proof of Peace, Proof of Nonexistance, & Proof of Connection are needed to open the door.
-        
-        7 Objectives - 13 random objectives given to the player. 7 of them must be completed to open the door.
-        
+        Enables Objective Randomizer.
+        In this mode you need to complete a specified amount of objectives to open the door to Final Xemnas instead of obtaining all 3 proofs.
+        '''
+    ),
+
+    SingleSelect(
+        name=settingkey.OBJECTIVE_DIFFICULTY,
+        group=SettingGroup.ITEM_PLACEMENT,
+        ui_label='Objective Difficulty',
+        choices={option.name: option.value for option in list(objectiveDifficultyOption)},
+        shared=True,
+        default=objectiveDifficultyOption.OBJECTIVES.name,
+        tooltip='''
+        Difficulty setting for objective pool.        
         ''',
-        standalone_label="Final Fights Objective",
+        standalone_label="Objective Difficulty Setting",
         randomizable=True
     ),
 
+    #SingleSelect(
+    #    name=settingkey.FINAL_DOOR_REQUIREMENT,
+    #    group=SettingGroup.ITEM_PLACEMENT,
+    #    ui_label='Final Door Requirement',
+    #    choices={option.name: option.value for option in list(FinalDoorlOption)},
+    #    shared=True,
+    #    default=FinalDoorlOption.ALLPROOF.name,
+    #    tooltip='''
+    #    Changes the requirement to open the door to Final Xemnas.
+    #    
+    #    All 3 Proofs - Proof of Peace, Proof of Nonexistance, & Proof of Connection are needed to open the door.
+    #    
+    #    7 Objectives - 13 random objectives given to the player. 7 of them must be completed to open the door.
+    #    
+    #    ''',
+    #    standalone_label="Final Fights Objective",
+    #    randomizable=True
+    #),
+
+    IntSpinner(
+        name=settingkey.OBJECTIVES_NEEDED,
+        group=SettingGroup.ITEM_PLACEMENT,
+        ui_label='Completion Marks Needed',
+        standalone_label='# Completion Marks Needed',
+        shared=True,
+        minimum=1,
+        maximum=13,
+        step=1,
+        default=7,
+        tooltip="Sets how many objectives need to be completed before the path to final xemnas can be opened.",
+        randomizable=[1,2,3,4,5,6,7]
+    ),
 
     Toggle(
         name=settingkey.BLOCK_COR_SKIP,

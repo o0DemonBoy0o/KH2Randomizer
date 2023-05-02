@@ -40,8 +40,8 @@ TTR_Objectives = [
 ]
 
 LoD_Objectives = [
-    KH2Objective("Climb the Mountain Trail",                        locationType.LoD, 495,    locationCategory.POPUP,0, True),
-    KH2Objective("Fight the Enemies in the Village Cave",           locationType.LoD, 43,     locationCategory.ITEMBONUS,0, True),
+    KH2Objective("Climb the Mountain Trail",                        locationType.LoD, 495,    locationCategory.POPUP,0),
+    KH2Objective("Fight the Enemies in the Village Cave",           locationType.LoD, 43,     locationCategory.ITEMBONUS,0),
     KH2Objective("Defeat Shan-Yu",                                  locationType.LoD, 9,      locationCategory.HYBRIDBONUS,1, True),
     KH2Objective("Defeat Storm Rider",                              locationType.LoD, 10,     locationCategory.ITEMBONUS,2, True),
 ]
@@ -90,7 +90,7 @@ PL_Objectives = [
     KH2Objective("Reunite with Simba",                              locationType.PL, 264,     locationCategory.POPUP),
     KH2Objective("Rescue Timon and Pumbaa",                         locationType.PL, 49,      locationCategory.STATBONUS),
     KH2Objective("Defeat Scar",                                     locationType.PL, 29,      locationCategory.STATBONUS,1, True),
-    KH2Objective("Get info about Scar out of the Hyenas",           locationType.PL, 50,      locationCategory.STATBONUS,1),
+    KH2Objective("Get info about Scar's Ghost from the Hyenas",     locationType.PL, 50,      locationCategory.STATBONUS,1),
     KH2Objective("Defeat Groundshaker",                             locationType.PL, 30,      locationCategory.HYBRIDBONUS,2, True),
 ]
 
@@ -127,7 +127,7 @@ HAW_Objectives = [
 AT_Objectives = [
     KH2Objective("Participate in the Musical",                      locationType.Atlantica, 367, locationCategory.POPUP),
     KH2Objective("Defeat Ursula",                                   locationType.Atlantica, 287, locationCategory.POPUP,2),
-    KH2Objective("Celebrate with everyone under the sea",           locationType.Atlantica, 538, locationCategory.POPUP,3),
+    KH2Objective("Celebrate a new day under the sea",               locationType.Atlantica, 538, locationCategory.POPUP,3),
 ]
 
 Cups_Objectives = [
@@ -327,7 +327,7 @@ def decideTask(mode, diff):
     if mode == 'OBJECTIVESHARD':
         chances = [25, 50, 70, 40]
     if mode == 'OBJECTIVESVHARD':
-        chances = [0, 20, 85, 100]
+        chances = [5, 20, 85, 100]
     
     testInt = random.randint(1, 100)
 

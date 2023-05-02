@@ -145,11 +145,11 @@ class BattleLevelOption(str, Enum):
     RANDOM_MAX_50 = 'Random (Max 50)'
     SCALE_TO_50 = 'Scale to 50'
 
-class FinalDoorlOption(str, Enum):
-    ALLPROOF = 'All 3 Proofs'
-    OBJECTIVES = '7 Objectives (No Logic)'
-    OBJECTIVESEASY = '7 Objectives (Easy)'
-    OBJECTIVESMID = '7 Objectives (Medium)'
-    OBJECTIVESHARD = '7 Objectives (Hard)'
-    OBJECTIVESVHARD = '7 Objectives (Very Hard)'
-    OBJECTIVESBOSS = '7 Objectives (Bosses Only)'
+class objectiveDifficultyOption(str, Enum):
+
+    OBJECTIVESEASY = 'Very Easy'
+    OBJECTIVESMID = 'Easy'
+    OBJECTIVES = 'Normal'
+    OBJECTIVESHARD = 'Hard'
+    OBJECTIVESVHARD = 'Very Hard'
+    OBJECTIVESBOSS = 'Bosses Only'

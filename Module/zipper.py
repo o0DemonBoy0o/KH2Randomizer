@@ -213,7 +213,7 @@ class SeedZip:
 
     def createZip(self, settings: RandomizerSettings, randomizer: Randomizer, hints, extra_data: ExtraConfigurationData, multiworld):
         mod = modYml.getDefaultMod()
-        sys = modYml.getSysYAML(settings.seedHashIcons,settings.crit_mode,settings.final_door_requirement)
+        sys = modYml.getSysYAML(settings.seedHashIcons,settings.crit_mode,settings.objective_randomizer,settings.objectives_needed)
 
         data = io.BytesIO()
         with zipfile.ZipFile(data, "w", zipfile.ZIP_DEFLATED) as outZip:
@@ -795,7 +795,7 @@ class SeedZip:
 
     def createObjectiveModeAssets(self, settings, mod, outZip, pc_toggle):
         #ymal edits
-        if settings.final_door_requirement != 'ALLPROOF':
+        if settings.objective_randomizer:
             mod["assets"] += modYml.getObjectiveMsgMod()
             jm = modYml.getJmYAML(settings.objectiveList)
             outZip.writestr("jm.yml", yaml.dump(jm, line_break="\r\n"))
@@ -809,8 +809,32 @@ class SeedZip:
             else:
                 mod["assets"] += [modYml.getObjectiveBarMod(pc_toggle, False)]
 
-            outZip.write(resource_path("static/objectives/ansem.bin"), "objectives/ansem.bin")
+            outZip.write(resource_path("static/objectives/ansem.bin"), "objectives/ansem_modified.bin")
             outZip.write(resource_path("static/objectives/completionmark.dds"), "objectives/remastered/completionmark.dds")
+            #Use crystal orb buy price for objectives needed (for goa lua to read)
+            modified_item = {
+                "Id": 363,
+                "Type": "Recipe",
+                "Flag0": 0,
+                "Flag1": 0,
+                "Rank": "C",
+                "StatEntry": 0,
+                "Name": 47883,
+                "Description": 47884,
+                "ShopBuy": settings.objectives_needed,
+                "ShopSell": 0,
+                "Command": 0,
+                "Slot": 189,
+                "Picture": 226,
+                "Icon1": 0,
+                "Icon2": 2}
+            #check if shop rando added items
+            if "Items" in self.formattedItem:
+                self.formattedItem["Items"].append(modified_item)
+            else:
+                self.formattedItem["Items"] = [modified_item]
+
+
 
     @staticmethod
     def write_music_replacements(replacements: dict[str, str], outZip):

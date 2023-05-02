@@ -6,7 +6,7 @@ from Class.exceptions import GeneratorException,CantAssignItemException, Setting
 from Module.modifier import SeedModifier
 from Class.newLocationClass import KH2Location
 from Class.itemClass import KH2Item, itemRarity
-from List.configDict import locationCategory, itemType, locationDepth, locationType, FinalDoorlOption
+from List.configDict import locationCategory, itemType, locationDepth, locationType
 from List.ItemList import Items
 from List.NewLocationList import Locations
 from Module.RandomizerSettings import RandomizerSettings
@@ -385,7 +385,7 @@ class Randomizer():
         #         break
 
         #way of getting objective rando to work. could be improved later
-        if settings.final_door_requirement != 'ALLPROOF':
+        if settings.objective_randomizer:
             objectiveItem = Items.sharedObjectiveItem()
             for x in range(13):
                 objective = settings.objectiveList[x]
@@ -409,9 +409,9 @@ class Randomizer():
                         validLocations.remove(location_to_place)
 
                 print('placed item ', x+1)
-            #remove proof of non
-            proof = [non for non in allItems if non.Id == 594 and non.ItemType == itemType.PROOF][0]
-            allItems.remove(proof)
+            ##remove proof of non
+            #proof = [non for non in allItems if non.Id == 594 and non.ItemType == itemType.PROOF][0]
+            #allItems.remove(proof)
 
 
 

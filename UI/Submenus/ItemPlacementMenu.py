@@ -21,6 +21,11 @@ class ItemPlacementMenu(KH2Submenu):
         self.add_option(settingkey.STORY_UNLOCK_CATEGORY)
         self.add_option(settingkey.STORY_UNLOCK_DEPTH)
         self.end_group('Where Items Can Go')
+        self.start_group()
+        self.add_option(settingkey.OBJECTIVE_RANDOMIZER)
+        self.add_option(settingkey.OBJECTIVE_DIFFICULTY)
+        self.add_option(settingkey.OBJECTIVES_NEEDED)
+        self.end_group('Objective Mode')
         self.end_column()
 
         self.start_column()

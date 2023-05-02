@@ -146,7 +146,7 @@ class modYml:
             ]
         }
 
-    def getSysYAML(seedHashIcons, crit_mode = False, final_door = 'ALLPROOF'):
+    def getSysYAML(seedHashIcons, crit_mode = False, objective_mode = False, min_objectives = 7):
         seedHashString = " ".join(["{:icon " + icon + "}" for icon in seedHashIcons])
         sys = [{"id": 17198, "en":seedHashString, "jp":seedHashString}]
         # sys.append({"id": 19482, "en": "Important Checks Found"}) # Not needed until we figure out how to display the correct amount
@@ -180,9 +180,9 @@ class modYml:
                 "en": "A true test of skill for the adept. Begin\nwith certain abilities and other perks.\n{:color #F0F00080}Critical Bonuses are turned off. The seven\nstarting items will be junk.",
                 "jp": "アクションのウデがためされる 上級者向けのモードです\n{:color #FF000080}クリティカル特典が無効になっています。ゲーム開始時\nにランダムな7つのジャンクアイテムを受け取れます",
             })
-        if final_door != 'ALLPROOF':
+        if objective_mode:
             sys.append({"id": 15115, "en": "Completion Mark"})
-            sys.append({"id": 15116, "en": "An Objective Completion Mark.\nAwarded to those who complete given tasks.\n7 of these are required to open the door..."})
+            sys.append({"id": 15116, "en": "An Objective Completion Mark.\nAwarded to those who complete given tasks.\n"+str(min_objectives)+" of these are required to open the door..."})
         return sys
     
     def getJmYAML(objectives):
@@ -261,7 +261,7 @@ class modYml:
                                 "method": "copy",
                                 "source": [
                                     {
-                                        "name": "objectives/ansem.bin"
+                                        "name": "objectives/ansem_modified.bin"
                                     }
                                 ]
                             }
@@ -287,7 +287,7 @@ class modYml:
                         "method": "copy",
                         "source": [
                             {
-                                "name": "objectives/ansem.bin"
+                                "name": "objectives/ansem_modified.bin"
                             }
                         ]
                     }]
